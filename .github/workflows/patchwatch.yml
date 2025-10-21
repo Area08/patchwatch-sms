@@ -1,0 +1,44 @@
+name: PatchWatch SMS
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # kör var 30:e minut
+  workflow_dispatch:        # så du kan köra manuellt med en knapp
+
+permissions:
+  contents: write           # så vi kan spara state.json tillbaka till repo
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run poller
+        env:
+          ELKS_USERNAME: ${{ secrets.ELKS_USERNAME }}
+          ELKS_PASSWORD: ${{ secrets.ELKS_PASSWORD }}
+          SMS_FROM: ${{ secrets.SMS_FROM }}
+          SMS_TO: ${{ secrets.SMS_TO }}
+        run: |
+          python poller.py
+
+      - name: Commit state if changed
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "patchwatch-bot"
+            git config user.email "patchwatch-bot@users.noreply.github.com"
+            git add state.json
+            git commit -m "Update state.json"
+            git push
+          fi
