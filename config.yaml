@@ -1,11 +1,11 @@
 sources:
-- name:"Call of Duty - Patch Notes"
-url: "htpps://www.callofduty.com/patch-notes"
-kind: "page_hash"
+  - name:"Call of Duty - Patch Notes"
+    url: "htpps://www.callofduty.com/patch-notes"
+    kind: "page_hash"
 
-- name: "Windows 11 - Update History"
-url: "https://support.microsoft.com/en-us/topic/windows-11-update-history-22b2"
-kind: "page_hash"
+  - name: "Windows 11 - Update History"
+    url: "https://support.microsoft.com/en-us/topic/windows-11-update-history-22b2"
+    kind: "page_hash"
 
 state_file: "state.json"
 message_prefix:"uppdatering upptäckt"
