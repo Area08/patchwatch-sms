@@ -8,4 +8,4 @@ sources:
     kind: "page_hash"
 
 state_file: "state.json"
-message_prefix:"uppdatering upptäckt"
+message_prefix: "uppdatering upptäckt"
