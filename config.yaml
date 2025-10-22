@@ -1,5 +1,5 @@
 sources:
-  - name:"Call of Duty - Patch Notes"
+  - name: "Call of Duty - Patch Notes"
     url: "https://www.callofduty.com/patch-notes"
     kind: "page_hash"
 
