@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import yaml
 
 # Miljövariabler från GitHub (Secrets)
-SMS_PROVIDER = "46ELKS"  # vi använder 46elks i den här guiden
+SMS_PROVIDER = "46ELKS" 
 ELKS_USERNAME = os.getenv("ELKS_USERNAME")
 ELKS_PASSWORD = os.getenv("ELKS_PASSWORD")
 SMS_FROM = os.getenv("SMS_FROM")
@@ -22,7 +22,7 @@ with open("config.yaml", "r", encoding="utf-8") as f:
     CFG = yaml.safe_load(f)
 STATE_FILE = Path(CFG.get("state_file", "state.json"))
 SOURCES = CFG.get("sources", [])
-MESSAGE_PREFIX = CFG.get("message_prefix", "🔔 Uppdatering upptäckt")
+MESSAGE_PREFIX = CFG.get("message_prefix", "Uppdatering upptäckt")
 
 def load_state():
     if STATE_FILE.exists():
