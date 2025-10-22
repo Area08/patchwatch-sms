@@ -107,5 +107,4 @@ def main():
     print("Klar.")
 
 if __name__ == "__main__":
-    notify("TEST - allt funkar", "https://example.com")
     main()
