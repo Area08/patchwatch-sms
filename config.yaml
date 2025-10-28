@@ -1,6 +1,6 @@
 sources:
   - name: "Call of Duty - Patch Notes"
-    url: "https://www.callofduty.com/patch-notes"
+    url: "https://www.callofduty.com/patchnotes"
     kind: "page_hash"
 
   - name: "Windows 11 - Update History"
