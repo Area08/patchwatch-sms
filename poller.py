@@ -57,8 +57,30 @@ def page_hash(html: str) -> str:
     soup = BeautifulSoup(html, "html.parser")
     for t in soup(["script", "style", "noscript"]):
         t.extract()
-    text = soup.get_text(separator=" ", strip=True)
+    text = soup.get_text(separator="\n", strip=True)
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+import re
+from urllib.parse import urljoin
+
+def warzone_link_hash(base_url: str, html: str) -> str:
+    """
+    Hittar första länk på /patchnotes som ser ut som Warzone-patch
+    och returnerar en stabil hash av dess absoluta URL.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    link = None
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        if ("warzone" in href.lower()) and ("patchnotes" in href.lower()):
+            link = href
+            break
+
+    if not link:
+        return ""  # ingen länk hittad => tom signatur
+
+    abs_url = urljoin(base_url, link)
+    return hashlib.sha256(abs_url.encode("utf-8")).hexdigest()
 
 def send_sms_via_46elks(to: str, message: str):
     data = {"from": SMS_FROM, "to": to, "message": message}
@@ -91,7 +113,12 @@ def check_source(src: dict, state: dict):
         print(f"[VARNING] Kunde inte hämta {url}: {e}", file=sys.stderr)
         return
 
-    new_sig = page_hash(html) if kind == "page_hash" else hashlib.sha256(html.encode("utf-8")).hexdigest()
+    if kind == "page_hash":
+    new_sig = page_hash(html)
+elif kind == "warzone_link_hash":
+    new_sig = warzone_link_hash(url, html)
+else:
+    new_sig = hashlib.sha256(html.encode("utf-8")).hexdigest()
     state.setdefault("sources", {})
     old_sig = state["sources"].get(url)
 
