@@ -1,6 +1,6 @@
 sources:
   - name: "Call of Duty - Patch Notes"
-    url: "https://www.callofduty.com/patchnotes"
+    url: "https://callofduty.com/patchnotes"
     kind: "selector_follow_hash" 
     selector: "a[href*='/patchnotes'][href*='warzone']:first-of-type" 
     follow_selector: "h1, h2, .article-title, .patch-notes__title" 
