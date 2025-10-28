@@ -4,7 +4,7 @@ sources:
     kind: "page_hash"
 
   - name: "Windows 11 - Update History"
-    url: "https://support.microsoft.com/en-us/topic/windows-11-update-history-22b2"
+    url: "https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information"
     kind: "page_hash"
 
 state_file: "state.json"
