@@ -5,6 +5,12 @@ sources:
     selector: "a[href*='/patchnotes'][href*='warzone']:first-of-type" 
     follow_selector: "h1, h2, .article-title, .patch-notes__title" 
     follow_kind: "selector_hash"
+    timeout: 90
+    retries: 3
+    headers:
+      User-Agent: "Mozilla/5.0 (WIndows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+      Accept: "text/html,application/xhtml+xml, application/xml;q=0.9*/*;q=0.8"
+      Accept-Language: "en-US, en;q=0.9"
 
   - name: "Apple IOS - Update"
     url: "https://support.apple.com/en-us/121161"
