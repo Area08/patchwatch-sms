@@ -3,6 +3,10 @@ sources:
     url: "https://www.callofduty.com/patchnotes"
     kind: "page_hash"
 
+  - name: "Apple IOS - Update"
+    url: "https://support.apple.com/en-us/121161"
+    kind: "page_hash"
+
   - name: "Windows 11 - Update History"
     url: "https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information"
     kind: "page_hash"
