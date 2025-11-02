@@ -113,12 +113,13 @@ def check_source(src: dict, state: dict):
         print(f"[VARNING] Kunde inte hämta {url}: {e}", file=sys.stderr)
         return
 
-if kind == "page_hash":
-    new_sig = page_hash(html)
-elif kind == "warzone_link_hash":
-    new_sig = warzone_link_hash(url, html)
-else:
-    new_sig = hashlib.sha256(html.encode("utf-8")).hexdigest()
+    if kind == "page_hash":
+        new_sig = page_hash(html)
+    elif kind == "warzone_link_hash":
+        new_sig = warzone_link_hash(url, html)
+    else:
+        new_sig = hashlib.sha256(html.encode("utf-8")).hexdigest()
+    
     state.setdefault("sources", {})
     old_sig = state["sources"].get(url)
 
