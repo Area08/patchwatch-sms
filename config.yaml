@@ -12,9 +12,5 @@ sources:
       Accept: "text/html,application/xhtml+xml, application/xml;q=0.9*/*;q=0.8"
       Accept-Language: "en-US, en;q=0.9"
 
-  - name: "Apple IOS - Update"
-    url: "https://support.apple.com/en-us/121161"
-    kind: "page_hash"
-
 state_file: "state.json"
 message_prefix: "uppdatering upptäckt"
